@@ -5,6 +5,11 @@
 
 # COMMAND ----------
 
+# This one is a big improvement .. make notebook aware of python modules in this repo
+# allows for rapid iteration without reloading or installing., 
+
+# COMMAND ----------
+
 # MAGIC %load_ext autoreload
 # MAGIC %autoreload 2
 
@@ -30,9 +35,9 @@ df = clean_spark_cols(df)
 df = index_to_col(df, colname='date')
 
 # Convert from Pandas to a pyspark sql DataFrame.
-df = spark.createDataFrame(df)
+spark_df = spark.createDataFrame(df)
 
-display(df)
+display(spark_df)
 
 # COMMAND ----------
 
@@ -140,7 +145,7 @@ print("new database created {}".format(dbName))
 # COMMAND ----------
 
 # Write to Delta Lake
-df.write.mode('overwrite').saveAsTable('covid_stats')
+spark_df.write.mode('overwrite').saveAsTable('covid_stats')
 
 # COMMAND ----------
 
