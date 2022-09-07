@@ -12,6 +12,10 @@
 
 # COMMAND ----------
 
+# test trigger
+
+# COMMAND ----------
+
 # MAGIC %pip install bamboolib
 
 # COMMAND ----------
